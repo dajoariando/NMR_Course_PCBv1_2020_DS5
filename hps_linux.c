@@ -1446,7 +1446,7 @@ void init_default_system_param() {
 
 	// initialize control lines to default value
 	ctrl_out = CNT_OUT_default;
-	alt_write_word((h2p_ctrl_out_addr), ctrl_out);
+	alt_write_word(h2p_ctrl_out_addr, ctrl_out);
 	usleep(100);
 
 	// initialize i2c default

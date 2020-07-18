@@ -60,7 +60,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0xf
 #define SYSID_QSYS_ID 2899645186
-#define SYSID_QSYS_TIMESTAMP 1567797404
+#define SYSID_QSYS_TIMESTAMP 1594954625
 
 /*
  * Macros for device 'nmr_parameters_samples_per_echo', class 'altera_avalon_pio'
