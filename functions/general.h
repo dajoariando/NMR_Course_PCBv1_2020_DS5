@@ -1,4 +1,5 @@
 // offsets for output control signal
+#define EN_PA_ofst					(10)
 #define NMR_CNT_RESET_ofst			(9)
 #define PLL_ANALYZER_RST_ofst		(8)
 #define PLL_NMR_SYS_RST_ofst		(7)
@@ -11,6 +12,7 @@
 #define DAC_CLR_ofst				(0)
 
 // Output control signal to FPGA
+#define EN_PA				(1<<EN_PA_ofst)
 #define NMR_CNT_RESET		(1<<NMR_CNT_RESET_ofst)
 #define PLL_ANALYZER_RST	(1<<PLL_ANALYZER_RST_ofst)
 #define PLL_NMR_SYS_RST		(1<<PLL_NMR_SYS_RST_ofst)
@@ -60,8 +62,6 @@
 
 #define CNT_I2C_default		0b0000000000000000
 
-
-
 // Offsets for input status signal
 #define PLL_ANALYZER_lock_ofst		(2)
 #define NMR_SEQ_run_ofst			(1)
@@ -70,9 +70,6 @@
 #define PLL_ANALYZER_lock			(1<<PLL_ANALYZER_lock_ofst)
 #define NMR_SEQ_run					(1<<NMR_SEQ_run_ofst)
 #define PLL_NMR_SYS_lock			(1<<PLL_NMR_SYS_lock_ofst)
-
-
-
 
 // general variable
 #define ENABLE_MESSAGE	1

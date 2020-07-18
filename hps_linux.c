@@ -1594,6 +1594,7 @@ int main(int argc, char * argv[]) {
 	uint32_t ph_cycl_en = atoi(argv[12]);
 	unsigned int pulse180_t1_int = atoi(argv[13]);
 	unsigned int delay180_t1_int = atoi(argv[14]);
+	unsigned int en_pa_delay = atoi(argv[15]);
 
 	open_physical_memory_device();
 	mmap_peripherals();
@@ -1602,6 +1603,11 @@ int main(int argc, char * argv[]) {
 	// write t1-IR measurement parameters (put both to 0 if IR is not desired)
 	alt_write_word(h2p_t1_pulse, pulse180_t1_int);
 	alt_write_word(h2p_t1_delay, delay180_t1_int);
+
+	// enable EN_PA and wait
+	ctrl_out |= EN_PA;
+	alt_write_word(h2p_ctrl_out_addr, ctrl_out);	// write down the control
+	usleep(en_pa_delay);
 
 	// printf("cpmg_freq = %0.3f\n",cpmg_freq);
 	CPMG_Manual(cpmg_freq,						//cpmg_freq
@@ -1617,7 +1623,10 @@ int main(int argc, char * argv[]) {
 			ph_cycl_en,						//phase cycle enable/disable
 			DISABLE_MESSAGE);
 
-	// close_system();
+	// disable EN_PA;
+	ctrl_out &= ~(EN_PA);
+	alt_write_word(h2p_ctrl_out_addr, ctrl_out);	// write down the control
+
 	munmap_peripherals();
 	close_physical_memory_device();
 	return 0;
